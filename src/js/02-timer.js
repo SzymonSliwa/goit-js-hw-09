@@ -9,6 +9,7 @@ const hoursCounter = document.querySelector('[data-hours]');
 const minutesCounter = document.querySelector('[data-minutes]');
 const secondsCounter = document.querySelector('[data-seconds]');
 let value = null;
+let timerID = null;
 
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
