@@ -20,22 +20,27 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    const currentDate = new Date();
-    const currentTime = currentDate.getTime();
+    let currentDate = new Date();
+    let currentTime = currentDate.getTime();
 
     if (selectedDates[0].getTime() < currentTime) {
       window.alert('Please choose a date in the future');
       btn.disabled = true;
     } else {
       btn.disabled = false;
-
+      //    log(currentTime);
       let ms = selectedDates[0].getTime() - currentTime;
 
       const onBtnClick = () => {
-        timerId = setInterval(() => {
+        timerID = setInterval(() => {
           if (ms > 1000) {
             ms = ms - 1000;
 
+            currentDate = new Date();
+            currentTime = currentDate.getTime();
+            //        console.log(currentTime);
+            //         log(currentDate);
+            ms = selectedDates[0].getTime() - currentTime;
             const convertedMs = convertMs(ms);
             daysCounter.innerHTML = addLeadingZero(convertedMs.days.toString());
             hoursCounter.innerHTML = addLeadingZero(
@@ -48,6 +53,7 @@ const options = {
               convertedMs.seconds.toString()
             );
             btn.disabled = true;
+            //        log(currentTime);
           }
         }, 1000);
       };
